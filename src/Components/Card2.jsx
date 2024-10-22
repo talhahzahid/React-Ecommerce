@@ -12,11 +12,11 @@ const Card2 = (item) => {
 
 
   const addCartIntoProduct = (item) => {
-    const isProduct = selector.some(item => item.cart.id === data.id);
-    if(!isProduct){
+    // const isProduct = selector.some(item => item.cart.id === data.id);
+    
       console.log('add');
       dispatch(addItem({ add: item }));
-    }
+    
   }
 
   const { image, des, title, price ,id} = item
