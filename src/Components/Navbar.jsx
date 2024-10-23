@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdOutlineShoppingBag } from "react-icons/md";
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 const Navbar = () => {
@@ -9,6 +9,9 @@ const Navbar = () => {
   // const selector = useSelector(state => state.cartitem); 
   // const [quantity, setQuantity] = useState(1);
   // console.log(selector);
+  
+// const quantities = useSelector(state => state.quantity);
+// const itemQuantity = quantities[item.id] || 0;
   return (
     <>
       <div className="navbar bg-neutral-content fixed top-0 left-0 w-full z-10 ">
@@ -53,7 +56,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <button className="btn">
          <Link to='/usercart'> <MdOutlineShoppingBag className='text-xl'/>
-         <div className="badge badge-primary text-xl">0 </div></Link>
+         <div className="badge badge-primary text-xl"><h1>0</h1></div></Link>
           </button>
         </div>
       </div>

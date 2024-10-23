@@ -1,6 +1,49 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { addQuantity, removeQuantity } from '../Config/Redux-config/reducer/cartSlice';
+useSelector
 
-const Card3 = (props) => {
+
+const Card3 = (item) => {
+
+  const  {image , price , title , id} = item
+
+  const hello =  useSelector(state => state.quantity);
+  console.log(hello);
+
+
+const dispatch = useDispatch()
+
+const addIntoCart = (item) =>{
+  console.log('add');
+  dispatch(addQuantity(
+    {addd:item.id}
+  ))
+}
+
+const removeIntoCart = () =>{
+  console.log('remove');
+  dispatch(removeQuantity(
+    {removee:item.id}
+  ))
+
+}
+
+
+
+
+
+
+
+
+
+
+
+const quantities = useSelector(state => state.quantity);
+const itemQuantity = quantities[item.id] || 0;
+
+
+  
   return (
     <>
   <div className="card lg:card-side w-96 p-10 bg-base-100 shadow-xl border">
@@ -11,14 +54,28 @@ const Card3 = (props) => {
         maxHeight: '100%', // Image will fit within the height of the figure
         objectFit: 'contain', // Maintain aspect ratio without cropping
       }}
-      src={props.image}
+      src={image}
       alt="Movie"
     />
   </figure>
   <div className="card-body">
-    <h2 className="card-title">{props.title}</h2>
-    <p>{props.price}</p>
-    <div className="card-actions justify-end">
+    <h2 className="card-title">{title}</h2>
+    <p>{price}</p>
+
+
+
+
+
+    <div className='flex justify-center items-center gap-7'>
+      <button className='btn btn-success' onClick={()=> addIntoCart(item)}>+</button>
+      <h1>{itemQuantity}</h1>
+      <button className='btn btn-error' onClick={removeIntoCart}>-</button>
+    </div>
+
+
+
+
+    <div className="card-actions justify-end mt-7">
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 <button className="btn btn-neutral" onClick={()=>document.getElementById('my_modal_1').showModal()}>Buy Now</button>
 <dialog id="my_modal_1" className="modal">
