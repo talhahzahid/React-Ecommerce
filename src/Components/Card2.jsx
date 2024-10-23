@@ -1,25 +1,34 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../Config/Redux-config/reducer/cartSlice';
-import { data } from 'autoprefixer';
 
 const Card2 = (item) => {
 
   const dispatch = useDispatch()
   const selector = useSelector(state => state.cartitem);
   console.log(selector);
-  
+
 
 
   const addCartIntoProduct = (item) => {
-    // const isProduct = selector.some(item => item.cart.id === data.id);
-    
-      console.log('add');
+    // selector.map((val) => {
+    //   if (val.id == item.id) {
+    //     return;
+    //   }
+    // });
+    // const isProduct = selector.some(val => item.id === val.id);
+    const isProduct = selector.some(val => {
+      return item.id === val.id
+    });
+
+    console.log('add');
+    if (!isProduct) {
       dispatch(addItem({ add: item }));
-    
+    }
+
   }
 
-  const { image, des, title, price ,id} = item
+  const { image, des, title, price, id } = item
   return (
     <>
       <div className="card bg-base-100 w-96 shadow-xl">
